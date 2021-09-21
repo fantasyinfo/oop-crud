@@ -6,7 +6,7 @@ $msg = '';
 
 // fetch all data
 $allData = $conn->getAllDataAtOnce('user');
-$allData = json_decode($allData, true);
+echo $allData;
 //$conn->prx($allData);
 
 

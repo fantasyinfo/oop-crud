@@ -1,7 +1,7 @@
 <?php
 
 // include DBController File
-require './DBController.php';
+require('../db/DBController.php');
 
 // creating Conn Obj
 

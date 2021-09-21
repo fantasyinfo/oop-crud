@@ -54,27 +54,8 @@
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <?php
-                        $i = 1;
-                        foreach ($allData['data'] as $row) { ?>
+                    <tbody id="get_data">
 
-                        <tr>
-                            <th scope="row"><?= $i; ?></th>
-                            <td><?= $row['user_name']; ?></td>
-                            <td><?= $row['user_email']; ?></td>
-                            <td>
-                                <button id="view" data-type="view-id=<?= $row['user_id']; ?>" class="btn btn-success"><i
-                                        class="fas fa-eye"></i></button>
-                                <button id="edit" data-type="edit-id=<?= $row['user_id']; ?>" class="btn btn-warning"><i
-                                        class="fas fa-pencil-alt"></i></button>
-                                <button id="delete" data-type="delete-id=<?= $row['user_id']; ?>"
-                                    class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                            </td>
-                        </tr>
-                        <?php $i++;
-                        } // closing foreach 
-                        ?>
                     </tbody>
                 </table>
             </div>
@@ -110,12 +91,57 @@
 
     <script>
     $(document).ready(function() {
+        var sendingHtml = "";
         $.ajax({
             url: './inc/crud-action.php',
             method: 'get',
             contentType: 'application/json',
             success: function(response) {
-                console.log(response);
+                console.log(typeof(response));
+                response = jQuery.parseJSON(response);
+                var finalData = response.data;
+                console.log(finalData);
+                console.log(finalData['0'].user_name);
+                for (i = 1; i < finalData.length; i++) {
+                    sendingHtml += "<tr><td>" + i + "</td><td>" + finalData[i].user_name +
+                        "</td><td>" + finalData[i].user_email +
+                        "</td><td><button class='btn btn-success' data-type='view-" + finalData[i]
+                        .user_id +
+                        "'>Eye</button><button class='btn btn-warning' data-type='view-" +
+                        finalData[i].user_id +
+                        "'>Edit</button><button class='btn btn-danger' data-type='view-" +
+                        finalData[i].user_id + "'>Delete</button></td></tr>";
+
+                }
+                jQuery('#get_data').html(sendingHtml);
+
+
+                // sendingHtml = "";
+
+                // finalData.map((data, i) => {
+
+                //     console.log(i);
+                //     sendingHtml += `  <tr>
+                //         <td>${i}</td>
+                //         <td>${data.user_name}</td>
+                //         <td>${data.user_email}</td>
+                //         <td>
+                //         empty
+                //         </td>
+                //     </tr>`;
+
+                //     //console.log(sendingHtml);
+                // });
+                // jQuery('#get_data').html(sendingHtml);
+
+
+
+
+
+
+
+
+                console.log(typeof(finalData));
             }
         });
     });
