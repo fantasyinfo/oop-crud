@@ -93,5 +93,6 @@ $conn->updateData('user', $dataArr, $conditionArr);
 <h1><?php $msg; ?></h1>
 <!-- hello -->
 <!-- Hi, i have updated that file -->
+<!-- Hi, i am from master -->
 
 </html>
