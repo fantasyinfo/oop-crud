@@ -116,24 +116,16 @@ class DBController
         return json_encode($this->status);
     }
 
-    function updateData($table, $arr, $carr)
+    function updateData($sql)
     {
-        $this->table = $table;
-        foreach ($arr as $key => $value) {
-            $keyArr[] = $key;
-            $valueArr[] = $value;
+        if ($this->conn->query($sql)) {
+            $this->status['status'] = 200;
+            $this->status['msg'] = "Data Updated Successfully";
+        } else {
+            $this->status['status'] = 404;
+            $this->status['msg'] = "Data Not Updated Due to Some Error Successfull";
         }
-        $keyArr = implode(",", $keyArr);
-        $valueArr = implode("','", $valueArr);
-        $valueArr = "'" . $valueArr . "'";
-        foreach ($carr as $key => $value) {
-            $ckeyArr[] = $key;
-            $cvalueArr[] = $value;
-        }
-        $ckeyArr = implode(",", $ckeyArr);
-        $cvalueArr = implode("','", $cvalueArr);
-        $cvalueArr = "'" . $cvalueArr . "'";
-        echo $sql = "update $this->table set $keyArr = $valueArr where $ckeyArr = $cvalueArr";
+        return json_encode($this->status);
     }
 
 
