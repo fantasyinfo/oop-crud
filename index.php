@@ -93,5 +93,6 @@ $conn->updateData('user', $dataArr, $conditionArr);
 <h1><?php $msg; ?></h1>
 <!-- hello -->
 <!-- Hi, i have updated that file -->
+<!-- Hey i am from fantasyinfo branch did you check that -->
 
 </html>
