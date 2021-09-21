@@ -93,10 +93,15 @@ $conn->updateData('user', $dataArr, $conditionArr);
 <h1><?php $msg; ?></h1>
 <!-- hello -->
 <!-- Hi, i have updated that file -->
-<<<<<<< HEAD
 <!-- Hi, i am from master -->
-=======
-<!-- Hey i am from fantasyinfo branch did you check that -->
->>>>>>> fantasyinfo
+
+
+
+<!-- Hello Form Online -->
+
+
+
+
+
 
 </html>
